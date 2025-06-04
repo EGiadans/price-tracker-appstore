@@ -27,7 +27,8 @@
     // and set up the paths for absolute imports
     "paths": {
       "@/styles/*": ["styles/*"],
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "@/lib/*":["lib/*"],
     }
   },
   "include": [

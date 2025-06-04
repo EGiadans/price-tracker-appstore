@@ -2,6 +2,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { Roboto } from "next/font/google";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "theme";
+import { PropsWithChildren } from "react";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -10,11 +11,7 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={roboto.variable}>
       <body>

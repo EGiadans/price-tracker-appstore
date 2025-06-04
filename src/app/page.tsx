@@ -1,5 +1,6 @@
+import prisma from "@/lib/prisma";
 import { Typography } from "@mui/material";
-import prisma from "../../lib/prisma";
+import Link from "next/link";
 
 export default async function Page() {
   const apps = await prisma.trackedApp.findMany();
@@ -10,8 +11,10 @@ export default async function Page() {
       <ul>
         {apps.map((app: any) => {
           return (
-            <li>
-              <Typography variant="body1">{app.name}</Typography>
+            <li key={app.id}>
+              <Typography variant="body1">
+                <Link href={`/appDetail/${app.id}`}>{app.name}</Link>
+              </Typography>
             </li>
           );
         })}
