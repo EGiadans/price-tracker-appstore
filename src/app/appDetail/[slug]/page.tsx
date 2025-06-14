@@ -8,7 +8,7 @@ type AppDetailProps = {
 export default async function AppDetail({ params }: AppDetailProps) {
   const { slug } = await params;
 
-  const apps = await prisma.trackedApp.findFirst({});
+  // const apps = await prisma.trackedApp.findFirst({});
 
   return <Typography variant="h1">{slug}</Typography>;
 }

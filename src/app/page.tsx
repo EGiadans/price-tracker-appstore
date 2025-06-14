@@ -1,21 +1,23 @@
+import { AppRow } from "@/components/AppRow";
 import prisma from "@/lib/prisma";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Link from "next/link";
+import { TrackedApp } from "types/types";
 
 export default async function Page() {
   const apps = await prisma.trackedApp.findMany();
 
   return (
     <>
-      <Typography variant="h1">Tracked Apps</Typography>
       <ul>
-        {apps.map((app: any) => {
+        {apps.map((app: TrackedApp) => {
           return (
-            <li key={app.id}>
-              <Typography variant="body1">
+            <Box key={app.id}>
+              {/* <Typography variant="body1">
                 <Link href={`/appDetail/${app.id}`}>{app.name}</Link>
-              </Typography>
-            </li>
+              </Typography> */}
+              <AppRow app={app} />
+            </Box>
           );
         })}
       </ul>
