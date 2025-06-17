@@ -1,8 +1,16 @@
+"use client";
 import { Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
+import { useRouter } from "next/navigation";
+import { HouseRounded } from "@mui/icons-material";
 
 export const CustomAppBar = () => {
+  const router = useRouter();
+
+  const handleNavigateHome = () => {
+    router.push("/");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="secondary">
@@ -13,11 +21,12 @@ export const CustomAppBar = () => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={handleNavigateHome}
           >
-            <MenuIcon />
+            <HouseRounded />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            Home
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

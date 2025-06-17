@@ -1,4 +1,4 @@
-export type TrackedApp = {
+export type AppData = {
   id: string;
   name: string;
   description: string;

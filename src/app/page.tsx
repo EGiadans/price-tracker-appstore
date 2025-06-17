@@ -1,26 +1,22 @@
-import { AppRow } from "@/components/AppRow";
+import { AppItemList } from "@/components/AppItemList";
+import { NewAppForm } from "@/components/NewAppForm";
 import prisma from "@/lib/prisma";
-import { Box, Typography } from "@mui/material";
-import Link from "next/link";
-import { TrackedApp } from "types/types";
+import { Divider, Grid } from "@mui/material";
 
 export default async function Page() {
   const apps = await prisma.trackedApp.findMany();
 
   return (
-    <>
-      <ul>
-        {apps.map((app: TrackedApp) => {
-          return (
-            <Box key={app.id}>
-              {/* <Typography variant="body1">
-                <Link href={`/appDetail/${app.id}`}>{app.name}</Link>
-              </Typography> */}
-              <AppRow app={app} />
-            </Box>
-          );
-        })}
-      </ul>
-    </>
+    <Grid container spacing={1} display="flex">
+      <Grid size={5}>
+        <NewAppForm />
+      </Grid>
+      <Grid size={1} display="flex" justifyContent={"center"}>
+        <Divider orientation="vertical" />
+      </Grid>
+      <Grid size={6} sx={{ padding: 4 }}>
+        <AppItemList apps={apps} />
+      </Grid>
+    </Grid>
   );
 }
