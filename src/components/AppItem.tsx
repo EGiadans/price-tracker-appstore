@@ -15,8 +15,8 @@ export const AppItem = ({ app }: AppItemProps) => {
   };
 
   return (
-    <Grid container spacing={2} sx={{ alignItems: "center" }}>
-      <Grid size={2} sx={{ backgroundColor: "red" }}>
+    <Grid container spacing={2} alignItems="center">
+      <Grid size={2}>
         <img
           src={app.imageUrl}
           alt={`image-${app.name}`}
