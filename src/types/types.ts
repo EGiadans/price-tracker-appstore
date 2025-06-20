@@ -1,7 +1,7 @@
 export type AppData = {
-  id: string;
+  id?: string;
   name: string;
-  description: string;
+  description?: string;
   appUrl: string;
   imageUrl: string;
 };

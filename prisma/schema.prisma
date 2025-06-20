@@ -20,7 +20,8 @@ model TrackedApp {
 
 model TrackedAppLog {
   id           String      @id @default(cuid())
-  trackedAppId String?
+  trackedAppId String
+  price        String
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
   TrackedApp   TrackedApp? @relation(fields: [trackedAppId], references: [id])

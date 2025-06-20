@@ -13,7 +13,7 @@ export const CustomAppBar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="secondary">
+      <AppBar position="sticky" color="secondary">
         <Toolbar>
           <IconButton
             size="large"

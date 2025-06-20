@@ -1,4 +1,3 @@
-import prisma from "@/lib/prisma";
 import { Typography } from "@mui/material";
 
 type AppDetailProps = {
@@ -8,7 +7,14 @@ type AppDetailProps = {
 export default async function AppDetail({ params }: AppDetailProps) {
   const { slug } = await params;
 
+  const fetchDetails = await fetch(
+    `${process.env.LOCAL_API}/trackedApp/${slug}`,
+    {
+      method: "GET",
+    }
+  ).then((res) => res.json());
+
   // const apps = await prisma.trackedApp.findFirst({});
 
-  return <Typography variant="h1">{slug}</Typography>;
+  return <Typography variant="h1">{JSON.stringify(fetchDetails)}</Typography>;
 }

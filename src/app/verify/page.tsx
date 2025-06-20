@@ -1,5 +1,5 @@
-import { AppItem } from "@/components/AppItem";
 import { AppPreview, AppPreviewProps } from "@/components/AppPreview";
+import { NewAppButton } from "@/components/NewAppButton";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
 /**
@@ -36,26 +36,32 @@ export default async function VerifyPage({ searchParams }: PageProps) {
 
   return (
     <Box margin="3rem">
-      <Typography variant="h3" marginBottom="3rem">
-        We found this data about {appData.title}:
-      </Typography>
-      <AppPreview {...appData} />
-      <Grid
-        container
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        spacing={2}
-        marginTop="3rem"
-      >
-        <Grid size={8} textAlign="right">
-          <Typography variant="h4">Are all the details correct?</Typography>
-        </Grid>
-        <Grid size={4}>
-          <Button>Yes</Button>
-          <Button>No, try again</Button>
-        </Grid>
-      </Grid>
+      {!appData.title ? (
+        <>Internal Error</>
+      ) : (
+        <>
+          <Typography variant="h3" marginBottom="3rem">
+            We found this data about {appData.title}:
+          </Typography>
+          <AppPreview {...appData} />
+          <Grid
+            container
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+            marginTop="3rem"
+          >
+            <Grid size={8} textAlign="right">
+              <Typography variant="h4">Are all the details correct?</Typography>
+            </Grid>
+            <Grid size={4}>
+              <NewAppButton appData={{ ...appData, appUrl: search }} />
+              <Button>No, try again</Button>
+            </Grid>
+          </Grid>
+        </>
+      )}
     </Box>
   );
 }
