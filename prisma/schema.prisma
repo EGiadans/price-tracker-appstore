@@ -8,14 +8,15 @@ datasource db {
 }
 
 model TrackedApp {
-  id          String          @id @default(cuid())
-  name        String
-  description String?
-  appUrl      String          @unique
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
-  imageUrl    String
-  logs        TrackedAppLog[]
+  id           String          @id @default(cuid())
+  name         String
+  description  String?
+  appUrl       String          @unique
+  initialPrice String?
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  imageUrl     String
+  logs         TrackedAppLog[]
 }
 
 model TrackedAppLog {

@@ -9,7 +9,6 @@ const funnel = Funnel_Display({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
-  // variable: "--font-funnel-display",
 });
 
 export default function RootLayout({ children }: PropsWithChildren) {

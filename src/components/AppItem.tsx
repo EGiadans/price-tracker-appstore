@@ -14,6 +14,8 @@ export const AppItem = ({ app }: AppItemProps) => {
     router.push(`/appDetail/${id}`);
   };
 
+  // TODO: Determine if the current price is lower than usual.
+
   return (
     <Grid container spacing={2} alignItems="center">
       <Grid size={2}>
@@ -47,7 +49,9 @@ export const AppItem = ({ app }: AppItemProps) => {
         <Typography variant="body1" sx={{ textDecoration: "line-through" }}>
           $199.00
         </Typography>
-        <Typography variant="body1">$199.00</Typography>
+        <Typography variant="body1">
+          {app.initialPrice || "Pending!"}
+        </Typography>
       </Grid>
     </Grid>
   );

@@ -3,6 +3,7 @@
 import { Button } from "@mui/material";
 import { AppPreviewProps } from "./AppPreview";
 import { useRouter } from "next/navigation";
+import { createLog } from "@/lib/actions";
 
 export const NewAppButton = ({
   appData,
@@ -11,7 +12,7 @@ export const NewAppButton = ({
 }) => {
   const router = useRouter();
 
-  const saveNewLog = async () => {
+  const saveNewApp = async () => {
     const res = await fetch("/api/trackedApp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -21,8 +22,10 @@ export const NewAppButton = ({
   };
 
   const handleSaveApp = async () => {
-    const data = await saveNewLog();
-    console.log("SAVE DATA: ", await data.json());
+    const data = await saveNewApp().then((res) => res.json());
+    console.log("DATA");
+    const priceData = await createLog(data);
+    console.log("PRICE DATA: ", priceData);
     router.push("/");
   };
 

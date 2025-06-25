@@ -1,6 +1,8 @@
 import { AppPreview, AppPreviewProps } from "@/components/AppPreview";
 import { NewAppButton } from "@/components/NewAppButton";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import prisma from "@/lib/prisma";
+import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import Link from "next/link";
 
 /**
  * TODO: Receive data from scrapper endpoint, if everything is right, save this data to the TrackedAppLog table
@@ -31,6 +33,21 @@ export default async function VerifyPage({ searchParams }: PageProps) {
   const { search } = await searchParams;
 
   if (!search) return <>No app url provided!</>;
+
+  const existingApp = await prisma.trackedApp.findFirst({
+    where: { appUrl: search },
+  });
+
+  if (existingApp) {
+    return (
+      <>
+        {/* <Typography variant="h3">This app is already being tracked!</Typography> */}
+        <Alert severity="success">This app is already being tracked!</Alert>
+        <AppPreview title={existingApp.name} image={existingApp.imageUrl} />
+        <Link href={`/appDetail/${existingApp.id}`}>Go to app details</Link>
+      </>
+    );
+  }
 
   const appData = await fetchData(search);
 

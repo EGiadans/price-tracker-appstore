@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 export type AppPreviewProps = {
   title: string;
-  price: string;
+  price?: string;
   image: string;
   description?: string;
 };
@@ -18,7 +18,7 @@ export const AppPreview = ({
       <img src={image} height={50} width={50} />
       <Typography variant="h3">{title}</Typography>
       <Typography variant="h4">{description}</Typography>
-      <Typography variant="h4">{price}</Typography>
+      {price && <Typography variant="h4">{price}</Typography>}
     </Box>
   );
 };
