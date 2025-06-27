@@ -5,7 +5,7 @@ import { AppItem } from "./AppItem";
 export const AppItemList = ({ apps }: { apps: AppData[] }) => {
   return (
     <>
-      <Typography variant="h3" marginBottom="16px">
+      <Typography variant="h3" marginBottom="2rem">
         My Tracked Apps
       </Typography>
       {apps.map((app: AppData) => (

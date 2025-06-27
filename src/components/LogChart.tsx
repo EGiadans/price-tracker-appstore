@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import {
   CartesianGrid,
   Legend,
@@ -10,33 +11,16 @@ import {
   YAxis,
 } from "recharts";
 
-export const LogChart = () => {
-  const data = [
-    {
-      name: "19/Jun",
-      price: 179,
-    },
-    {
-      name: "20/Jun",
-      price: 179,
-    },
-    {
-      name: "21/Jun",
-      price: 179,
-    },
-    {
-      name: "22/Jun",
-      price: 179,
-    },
-    {
-      name: "23/Jun",
-      price: 179,
-    },
-    {
-      name: "24/Jun",
-      price: 179,
-    },
-  ];
+type LogChartProps = {
+  priceData: { price: string; date: string }[];
+};
+
+export const LogChart = ({ priceData }: LogChartProps) => {
+  const [historicData, setHistoricData] = useState([]);
+
+  useEffect(() => {
+    setHistoricData(priceData);
+  }, []);
 
   return (
     <>
@@ -44,7 +28,7 @@ export const LogChart = () => {
         <LineChart
           width={500}
           height={300}
-          data={data}
+          data={historicData}
           margin={{
             top: 5,
             right: 30,
@@ -53,7 +37,7 @@ export const LogChart = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="date" />
           <YAxis />
           <Tooltip />
           <Legend />

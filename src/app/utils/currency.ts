@@ -3,5 +3,6 @@ export const convertCurrencyToNumber = (currency: string) => {
 };
 
 export const formatCurrency = (currency: number) => {
-  return `$${currency}`;
+  const validateCents = currency.toFixed(2);
+  return `$${validateCents}`;
 };

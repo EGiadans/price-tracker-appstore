@@ -1,6 +1,7 @@
 "use client";
 import { Grid, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
+import theme from "theme";
 import { AppData } from "types/types";
 
 type AppItemProps = {
@@ -17,7 +18,22 @@ export const AppItem = ({ app }: AppItemProps) => {
   // TODO: Determine if the current price is lower than usual.
 
   return (
-    <Grid container spacing={2} alignItems="center">
+    <Grid
+      container
+      spacing={2}
+      alignItems="center"
+      sx={{
+        "&:hover": {
+          backgroundColor: "lightGray",
+          // color: "red",
+          textShadow: "1px 1px 2px white",
+          boxShadow: 2,
+          transition: theme.transitions.create("box-shadow", {
+            duration: theme.transitions.duration.short,
+          }),
+        },
+      }}
+    >
       <Grid size={2}>
         <img
           src={app.imageUrl}
@@ -30,15 +46,6 @@ export const AppItem = ({ app }: AppItemProps) => {
         size={8}
         sx={{
           cursor: "pointer",
-          // // boxShadow: 2,
-          // backgroundColor: "background.paper",
-          // transition: theme.transitions.create("box-shadow", {
-          //   duration: theme.transitions.duration.standard,
-          // }),
-          "&:hover": {
-            // color: theme.palette.success,
-            // textShadow: "1px 1px 2px grey",
-          },
         }}
         onClick={() => handleNavigate(app.id)}
       >

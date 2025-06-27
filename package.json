@@ -24,6 +24,7 @@
     "seed": "tsx prisma/seed.ts"
   },
   "devDependencies": {
+    "@types/luxon": "^3.6.2",
     "@types/node": "22.15.21",
     "@types/react": "19.1.5",
     "eslint": "9.27.0",
