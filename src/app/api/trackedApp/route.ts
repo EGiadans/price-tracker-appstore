@@ -20,4 +20,10 @@ export async function POST(request: NextRequest) {
   });
 }
 
-export async function GET(request: NextRequest) {}
+export async function GET(request: NextRequest) {
+  const apps = await prisma.trackedApp.findMany();
+
+  return NextResponse.json({
+    apps,
+  });
+}

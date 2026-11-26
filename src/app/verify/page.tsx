@@ -41,7 +41,6 @@ export default async function VerifyPage({ searchParams }: PageProps) {
   if (existingApp) {
     return (
       <>
-        {/* <Typography variant="h3">This app is already being tracked!</Typography> */}
         <Alert severity="success">This app is already being tracked!</Alert>
         <AppPreview title={existingApp.name} image={existingApp.imageUrl} />
         <Link href={`/appDetail/${existingApp.id}`}>Go to app details</Link>

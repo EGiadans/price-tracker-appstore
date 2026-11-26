@@ -11,7 +11,7 @@ export default async function Page() {
       <Grid size={5}>
         <NewAppForm />
       </Grid>
-      <Grid size={1} display="flex" justifyContent={"center"}>
+      <Grid size={1} display="flex" justifyContent={"center"} height="90vh">
         <Divider orientation="vertical" />
       </Grid>
       <Grid size={6} sx={{ padding: 4 }}>

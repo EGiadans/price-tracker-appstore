@@ -1,5 +1,13 @@
 "use client";
-import { Alert, Box, Button, Grid, Input, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Grid,
+  Input,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -9,7 +17,7 @@ export const NewAppForm = () => {
   const router = useRouter();
 
   const handleSubmit = () => {
-    if (!text) {
+    if (!text || !text.includes("https://")) {
       setIsError(true);
       return;
     }
@@ -24,17 +32,19 @@ export const NewAppForm = () => {
         </Grid>
         {isError && <Alert severity="warning">Please enter a valid URL</Alert>}
         <Grid>
-          <Input
+          <TextField
             type="url"
             required
             placeholder="https://..."
-            sx={{ width: "100%" }}
             value={text}
             onChange={(e) => setText(e.target.value)}
+            fullWidth
           />
         </Grid>
         <Grid marginLeft="auto">
-          <Button onClick={handleSubmit}>Search</Button>
+          <Button variant="outlined" onClick={handleSubmit}>
+            Search
+          </Button>
         </Grid>
       </Grid>
     </Box>
